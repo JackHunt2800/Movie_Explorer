@@ -131,19 +131,6 @@ const Navbar = () => {
                     WebkitTextFillColor: 'transparent',
                   }}
                 >
-                  CinePulse
-                </Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    fontSize: '0.65rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.8px',
-                    color: 'text.secondary',
-                    textTransform: 'uppercase',
-                    lineHeight: 1,
-                  }}
-                >
                   Movie Explorer
                 </Typography>
               </Box>
@@ -326,9 +313,6 @@ const Navbar = () => {
           </Box>
           <Box>
             <Typography variant="h6" fontWeight={800} className="heading-display">
-              CinePulse
-            </Typography>
-            <Typography variant="caption" color="text.secondary">
               Movie Explorer
             </Typography>
           </Box>

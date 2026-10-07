@@ -38,43 +38,15 @@ const HomePage = () => {
     loadingMore,
     error,
     hasMore,
-    paginationMode,
     loadMore,
     fetchTrending,
     clearSearch,
   } = useMovies();
 
   const [heroTrailerOpen, setHeroTrailerOpen] = useState(false);
-  const observerTarget = useRef(null);
 
   // Top featured movie for hero section (first trending movie with backdrop)
   const heroMovie = trendingMovies.length > 0 ? trendingMovies[0] : null;
-
-  // Infinite Scroll Observer implementation
-  useEffect(() => {
-    if (paginationMode !== 'infinite') return;
-    if (!hasMore || loading || loadingMore) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          loadMore();
-        }
-      },
-      { threshold: 0.2, rootMargin: '200px' }
-    );
-
-    const currentTarget = observerTarget.current;
-    if (currentTarget) {
-      observer.observe(currentTarget);
-    }
-
-    return () => {
-      if (currentTarget) {
-        observer.unobserve(currentTarget);
-      }
-    };
-  }, [paginationMode, hasMore, loading, loadingMore, loadMore]);
 
   return (
     <Box sx={{ pb: 8 }}>
@@ -317,59 +289,38 @@ const HomePage = () => {
             </Grid>
 
             {/* Pagination Controls */}
+            {/* Load More Button for better UX */}
             {hasMore && (
-              <Box sx={{ mt: 6, textAlign: 'center' }}>
-                {paginationMode === 'load_more' ? (
-                  /* Bonus Feature: Load More Button */
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    onClick={loadMore}
-                    disabled={loadingMore}
-                    startIcon={
-                      loadingMore ? (
-                        <CircularProgress size={20} color="inherit" />
-                      ) : (
-                        <ArrowDownwardIcon />
-                      )
-                    }
-                    sx={{
-                      px: 5,
-                      py: 1.4,
-                      borderRadius: 50,
-                      fontWeight: 700,
-                      boxShadow: '0 8px 24px rgba(99, 102, 241, 0.3)',
-                    }}
-                  >
-                    {loadingMore ? 'Loading More Films...' : 'Load More Movies'}
-                  </Button>
-                ) : (
-                  /* Infinite Scroll Observer Target & Spinner */
-                  <Box
-                    ref={observerTarget}
-                    sx={{
-                      py: 4,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      gap: 1.5,
-                    }}
-                  >
-                    {loadingMore ? (
-                      <>
-                        <CircularProgress size={36} color="primary" />
-                        <Typography variant="body2" color="text.secondary" fontWeight={600}>
-                          Discovering more titles...
-                        </Typography>
-                      </>
+              <Box sx={{ mt: 6, mb: 2, textAlign: 'center' }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  onClick={loadMore}
+                  disabled={loadingMore}
+                  startIcon={
+                    loadingMore ? (
+                      <CircularProgress size={20} color="inherit" />
                     ) : (
-                      <Typography variant="caption" color="text.secondary">
-                        Scroll down to load more films
-                      </Typography>
-                    )}
-                  </Box>
-                )}
+                      <ArrowDownwardIcon />
+                    )
+                  }
+                  sx={{
+                    px: { xs: 4, sm: 6 },
+                    py: 1.5,
+                    borderRadius: 50,
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    boxShadow: '0 8px 24px rgba(99, 102, 241, 0.35)',
+                    transition: 'all 0.25s ease',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 12px 28px rgba(99, 102, 241, 0.45)',
+                    },
+                  }}
+                >
+                  {loadingMore ? 'Loading More Movies...' : 'Load More Movies'}
+                </Button>
               </Box>
             )}
           </>

@@ -35,7 +35,7 @@ const Footer = () => {
               <MovieIcon sx={{ color: '#FFFFFF', fontSize: 20 }} />
             </Box>
             <Typography variant="subtitle1" fontWeight={800} className="heading-display">
-              CinePulse — Movie Explorer
+              Movie Explorer
             </Typography>
           </Box>
 
@@ -47,7 +47,7 @@ const Footer = () => {
 
           {/* Copyright & Info */}
           <Typography variant="caption" color="text.secondary">
-            © {new Date().getFullYear()} CinePulse. All rights reserved.
+            © {new Date().getFullYear()} Movie Explorer. All rights reserved.
           </Typography>
         </Stack>
       </Container>

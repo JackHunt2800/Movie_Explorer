@@ -6,6 +6,7 @@ import { AuthProvider } from './context/AuthContext';
 import { MovieProvider } from './context/MovieContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import FavoritesPage from './pages/FavoritesPage';
@@ -38,6 +39,7 @@ function App() {
                 </Routes>
               </Box>
               <Footer />
+              <ScrollToTop />
             </Box>
           </Router>
         </MovieProvider>

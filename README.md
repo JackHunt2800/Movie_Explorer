@@ -1,4 +1,4 @@
-# 🎬 CinePulse — Movie Explorer
+# 🎬 Movie Explorer
 
 > *"Discover Your Favorite Films"*
 

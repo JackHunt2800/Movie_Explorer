@@ -90,7 +90,7 @@ const LoginPage = () => {
           </Box>
 
           <Typography variant="h5" fontWeight={900} className="heading-display" gutterBottom>
-            Welcome to CinePulse
+            Welcome to Movie Explorer
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
             Sign in to personalize your Movie Explorer experience and sync favorites.

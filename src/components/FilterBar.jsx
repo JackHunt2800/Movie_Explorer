@@ -8,16 +8,9 @@ import {
   Stack,
   Button,
   Chip,
-  ToggleButtonGroup,
-  ToggleButton,
   Typography,
-  Tooltip,
 } from '@mui/material';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
-import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
-import TouchAppIcon from '@mui/icons-material/TouchApp';
-import StarIcon from '@mui/icons-material/Star';
 import { useMovies } from '../context/MovieContext';
 
 const YEARS = ['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2014', '2010', '2008', '2001', '1999', '1977', '1972'];
@@ -28,8 +21,6 @@ const FilterBar = () => {
     filters,
     setFilter,
     resetFilters,
-    paginationMode,
-    setPaginationMode,
   } = useMovies();
 
   const isFilterActive =
@@ -37,12 +28,6 @@ const FilterBar = () => {
     Boolean(filters.year) ||
     filters.minRating > 0 ||
     filters.sortBy !== 'popularity.desc';
-
-  const handlePaginationChange = (e, newMode) => {
-    if (newMode !== null) {
-      setPaginationMode(newMode);
-    }
-  };
 
   return (
     <Box
@@ -160,46 +145,6 @@ const FilterBar = () => {
             </Button>
           )}
         </Stack>
-
-        {/* Bonus Feature: Scroll Style Toggle (Infinite Scroll vs Load More Button) */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, pt: { xs: 1, md: 0 } }}>
-          <Typography variant="caption" color="text.secondary" fontWeight={600}>
-            Pagination Mode:
-          </Typography>
-          <ToggleButtonGroup
-            value={paginationMode}
-            exclusive
-            onChange={handlePaginationChange}
-            size="small"
-            aria-label="pagination mode"
-            sx={{
-              height: 34,
-              '& .MuiToggleButton-root': {
-                px: 1.5,
-                fontSize: '0.78rem',
-                textTransform: 'none',
-                fontWeight: 600,
-              },
-            }}
-          >
-            <ToggleButton value="infinite" aria-label="infinite scroll">
-              <Tooltip title="Infinite Scrolling: auto-loads on scroll">
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                  <AllInclusiveIcon sx={{ fontSize: 16 }} />
-                  <span>Infinite</span>
-                </Box>
-              </Tooltip>
-            </ToggleButton>
-            <ToggleButton value="load_more" aria-label="load more button">
-              <Tooltip title="Load More Button: manual control for better UX">
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                  <TouchAppIcon sx={{ fontSize: 16 }} />
-                  <span>Load More</span>
-                </Box>
-              </Tooltip>
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </Box>
       </Stack>
     </Box>
   );
