@@ -39,7 +39,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { mode, toggleColorMode } = useThemeMode();
-  const { favorites, isMockData } = useMovies();
+  const { favorites } = useMovies();
   const { user, isAuthenticated, logout } = useAuth();
 
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -136,18 +136,7 @@ const Navbar = () => {
               </Box>
             </Box>
 
-            {/* Mock status indicator (only shown if active) */}
-            {isMockData && (
-              <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', mr: 2 }}>
-                <Chip
-                  label="Demo Mode"
-                  size="small"
-                  color="warning"
-                  variant="filled"
-                  sx={{ fontSize: '0.65rem', height: 20 }}
-                />
-              </Box>
-            )}
+
 
             {/* Desktop Navigation Links */}
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: 1 }}>

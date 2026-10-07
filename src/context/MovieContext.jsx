@@ -59,8 +59,6 @@ export const MovieProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState(null);
-  const [isMockData, setIsMockData] = useState(false);
-  const [apiKey, setApiKeyState] = useState(getStoredApiKey());
 
   // Save favorites to localStorage
   useEffect(() => {
@@ -106,7 +104,6 @@ export const MovieProvider = ({ children }) => {
 
     try {
       const res = await tmdbApi.getTrending(pageNum);
-      setIsMockData(Boolean(res.isMock));
 
       setTrendingMovies((prev) => (pageNum === 1 || reset ? res.results : [...prev, ...res.results]));
       setMovies((prev) => (pageNum === 1 || reset ? res.results : [...prev, ...res.results]));
@@ -147,7 +144,6 @@ export const MovieProvider = ({ children }) => {
 
     try {
       const res = await tmdbApi.searchMovies(trimmed, pageNum);
-      setIsMockData(Boolean(res.isMock));
 
       if (res.results.length === 0 && pageNum === 1) {
         setError(`No movies found for "${trimmed}". Try another title or check filters.`);
@@ -237,13 +233,6 @@ export const MovieProvider = ({ children }) => {
     fetchTrending(1, true);
   }, [fetchTrending]);
 
-  const updateApiKey = useCallback((newKey) => {
-    setStoredApiKey(newKey);
-    setApiKeyState(newKey);
-    // Reload trending with new key
-    fetchTrending(1, true);
-  }, [fetchTrending]);
-
   // Filter & Sort Logic applied on current movies
   const filteredMovies = useMemo(() => {
     let result = [...movies];
@@ -303,8 +292,6 @@ export const MovieProvider = ({ children }) => {
         loading,
         loadingMore,
         error,
-        isMockData,
-        apiKey,
         // Methods
         fetchTrending,
         searchMovies,
@@ -316,7 +303,6 @@ export const MovieProvider = ({ children }) => {
         resetFilters,
         clearSearch,
         setPaginationMode,
-        updateApiKey,
       }}
     >
       {children}
