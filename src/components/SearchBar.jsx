@@ -51,13 +51,13 @@ const SearchBar = ({ onSearchSubmit }) => {
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 760, mx: 'auto', mb: 3 }}>
+    <Box sx={{ width: '100%', maxWidth: 780, mx: 'auto', mb: { xs: 3.5, sm: 4 } }}>
       <form onSubmit={handleSubmit}>
         <Box
           sx={{
             display: 'flex',
             alignItems: 'center',
-            p: '4px 6px',
+            p: { xs: '6px 8px', sm: '8px 12px' },
             borderRadius: 50,
             bgcolor: 'background.paper',
             border: '1px solid',
@@ -85,8 +85,8 @@ const SearchBar = ({ onSearchSubmit }) => {
             InputProps={{
               disableUnderline: true,
               startAdornment: (
-                <InputAdornment position="start" sx={{ pl: 1.5, pr: 0.5 }}>
-                  <SearchIcon color="primary" sx={{ fontSize: 26 }} />
+                <InputAdornment position="start" sx={{ pl: { xs: 1.5, sm: 2 }, pr: 1 }}>
+                  <SearchIcon color="primary" sx={{ fontSize: 28 }} />
                 </InputAdornment>
               ),
               endAdornment: inputVal ? (
@@ -96,15 +96,16 @@ const SearchBar = ({ onSearchSubmit }) => {
                     onClick={handleClear}
                     edge="end"
                     aria-label="clear search"
-                    sx={{ mr: 0.5 }}
+                    sx={{ mr: 1 }}
                   >
                     <ClearIcon fontSize="small" />
                   </IconButton>
                 </InputAdornment>
               ) : null,
               sx: {
-                py: 0.8,
-                fontSize: { xs: '0.95rem', md: '1.05rem' },
+                py: { xs: 1.0, sm: 1.25 },
+                px: { xs: 0.5, sm: 1 },
+                fontSize: { xs: '0.98rem', md: '1.08rem' },
                 fontWeight: 500,
               },
             }}
@@ -115,8 +116,9 @@ const SearchBar = ({ onSearchSubmit }) => {
             color="primary"
             sx={{
               borderRadius: 50,
-              px: { xs: 2.5, sm: 3.5 },
-              py: 1.1,
+              px: { xs: 3, sm: 4 },
+              py: { xs: 1.15, sm: 1.35 },
+              fontSize: { xs: '0.9rem', sm: '0.98rem' },
               fontWeight: 700,
               flexShrink: 0,
             }}

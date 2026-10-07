@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
     const newUser = {
       username: username.trim(),
       name: username.charAt(0).toUpperCase() + username.slice(1),
-      email: `${username.toLowerCase().replace(/\s+/g, '')}@loonslab.com`,
+      email: `${username.toLowerCase().replace(/\s+/g, '')}@example.com`,
       avatarUrl: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(username)}`,
       joinedAt: new Date().toLocaleDateString(),
     };

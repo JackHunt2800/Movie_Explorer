@@ -19,7 +19,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import PersonIcon from '@mui/icons-material/Person';
 import MovieIcon from '@mui/icons-material/Movie';
-import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
@@ -44,12 +43,6 @@ const LoginPage = () => {
     } else {
       setFormError(result.error);
     }
-  };
-
-  const handleDemoFill = () => {
-    setUsername('loons_explorer');
-    setPassword('intern2026');
-    setFormError(null);
   };
 
   return (
@@ -170,34 +163,11 @@ const LoginPage = () => {
               variant="contained"
               color="primary"
               size="large"
-              sx={{ mt: 3, mb: 2, py: 1.3, fontWeight: 700 }}
+              sx={{ mt: 3, mb: 1, py: 1.3, fontWeight: 700 }}
             >
               Sign In
             </Button>
           </form>
-
-          <Divider sx={{ my: 2.5 }}>
-            <Typography variant="caption" color="text.secondary">
-              QUICK ACCESS
-            </Typography>
-          </Divider>
-
-          <Button
-            fullWidth
-            variant="outlined"
-            color="secondary"
-            startIcon={<AutoFixHighIcon />}
-            onClick={handleDemoFill}
-            sx={{ fontWeight: 600, py: 1 }}
-          >
-            Fill Demo Credentials
-          </Button>
-
-          <Box sx={{ mt: 3 }}>
-            <Typography variant="caption" color="text.secondary">
-              Loons Lab intern evaluation demo account
-            </Typography>
-          </Box>
         </Paper>
       </Container>
     </Box>

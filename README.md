@@ -1,7 +1,6 @@
 # 🎬 CinePulse — Movie Explorer
 
-> **Loons Lab Internship Assessment Project**  
-> *"Movie Explorer – Discover Your Favorite Films"*
+> *"Discover Your Favorite Films"*
 
 A modern, cinematic web application that allows movie lovers to search films, discover trending releases, view deep cast & storyline insights, watch official YouTube trailers, and save their favorites. Built with **React 19**, **React Context API**, **Material-UI (MUI)**, and powered by **The Movie Database (TMDb) API**.
 
@@ -28,7 +27,6 @@ The application uses pure **React Context API** with structured modular provider
 - **`AuthContext`**:
   - Handles user login with username and password validation.
   - Stores authenticated user session in `localStorage`.
-  - Includes a convenient **One-Click Demo Login** button (`loons_explorer`).
 - **`ThemeContext`**:
   - Manages dark/light theme switching and persists user preference.
 
@@ -75,9 +73,8 @@ Movie Explorer_Loons/
 │   ├── api/
 │   │   └── tmdb.js             # TMDb API client, axios configuration, mock fallback
 │   ├── components/
-│   │   ├── ApiKeyModal.jsx     # TMDb API key settings & live tester dialog
 │   │   ├── FilterBar.jsx       # Genre, year, rating, sorting & scroll mode controls
-│   │   ├── Footer.jsx          # Footer with TMDb and Loons Lab attribution
+│   │   ├── Footer.jsx          # Footer with TMDb API attribution
 │   │   ├── MovieCard.jsx       # Reusable movie poster card with ratings & favorites
 │   │   ├── MovieSkeleton.jsx   # Skeleton loading placeholder grid
 │   │   ├── Navbar.jsx          # Responsive navbar with favorites badge & theme switch
@@ -167,7 +164,7 @@ npm run build
 
 ---
 
-## 📋 Evaluation Checklist Reference (Loons Lab)
+## 📋 Feature Checklist Reference
 
 - [x] **User Login interface** with username and password.
 - [x] **Search bar** with relevant results and debouncing.
